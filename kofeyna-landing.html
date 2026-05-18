@@ -1,0 +1,1063 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Кофейня под ключ — бесплатно по соцконтракту</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --dark:       #111110;
+    --dark-2:     #1C1C1A;
+    --dark-3:     #252523;
+    --brown:      #5C3317;
+    --brown-mid:  #8B5A2B;
+    --brown-light:#C9936A;
+    --cream:      #F2EDE5;
+    --cream-2:    #E8E0D4;
+    --cherry:     #6B1C35;
+    --cherry-mid: #8F2744;
+    --cherry-light:#B84B68;
+    --metal:      #7A8087;
+    --white:      #FAFAF8;
+    --text:       #1A1917;
+    --text-muted: #6B6560;
+    --serif:      'Cormorant Garamond', Georgia, serif;
+    --sans:       'Jost', sans-serif;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: var(--sans);
+    background: var(--white);
+    color: var(--text);
+    font-size: 16px;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 18px 48px;
+    background: rgba(17,17,16,0.92);
+    backdrop-filter: blur(12px);
+    border-bottom: 0.5px solid rgba(255,255,255,0.07);
+  }
+  .nav-logo {
+    font-family: var(--serif);
+    font-size: 20px;
+    font-weight: 500;
+    color: var(--cream);
+    letter-spacing: .03em;
+  }
+  .nav-logo span { color: var(--brown-light); }
+  .nav-cta {
+    background: var(--cherry);
+    color: #fff;
+    font-family: var(--sans);
+    font-size: 13px;
+    font-weight: 400;
+    letter-spacing: .05em;
+    padding: 9px 22px;
+    border-radius: 6px;
+    text-decoration: none;
+    transition: background .2s;
+  }
+  .nav-cta:hover { background: var(--cherry-mid); }
+
+  /* ── HERO ── */
+  .hero {
+    min-height: 100vh;
+    background: var(--dark);
+    display: flex; flex-direction: column;
+    justify-content: center; align-items: center;
+    text-align: center;
+    padding: 120px 48px 80px;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute; inset: 0;
+    background:
+      radial-gradient(ellipse 60% 50% at 50% 0%, rgba(107,28,53,0.35) 0%, transparent 70%),
+      radial-gradient(ellipse 40% 40% at 20% 80%, rgba(92,51,23,0.25) 0%, transparent 60%);
+    pointer-events: none;
+  }
+  .hero-badge {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: rgba(107,28,53,0.3);
+    border: 0.5px solid rgba(184,75,104,0.4);
+    color: var(--cherry-light);
+    font-size: 12px;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    padding: 6px 18px;
+    border-radius: 20px;
+    margin-bottom: 32px;
+    position: relative; z-index: 1;
+  }
+  .hero-badge::before {
+    content: '';
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: var(--cherry-light);
+    animation: pulse 2s ease-in-out infinite;
+  }
+  @keyframes pulse {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: .4; transform: scale(.8); }
+  }
+  .hero h1 {
+    font-family: var(--serif);
+    font-size: clamp(42px, 7vw, 80px);
+    font-weight: 500;
+    line-height: 1.1;
+    color: var(--cream);
+    max-width: 780px;
+    margin-bottom: 8px;
+    position: relative; z-index: 1;
+  }
+  .hero h1 em {
+    font-style: italic;
+    color: var(--brown-light);
+  }
+  .hero-sub-title {
+    font-family: var(--serif);
+    font-size: clamp(22px, 4vw, 38px);
+    font-weight: 400;
+    color: var(--metal);
+    margin-bottom: 28px;
+    position: relative; z-index: 1;
+  }
+  .hero-desc {
+    font-size: 15px;
+    color: #999;
+    max-width: 520px;
+    line-height: 1.7;
+    margin-bottom: 44px;
+    position: relative; z-index: 1;
+    font-weight: 300;
+  }
+  .hero-actions {
+    display: flex; gap: 14px; flex-wrap: wrap; justify-content: center;
+    position: relative; z-index: 1;
+    margin-bottom: 56px;
+  }
+  .btn-main {
+    background: var(--cherry);
+    color: #fff;
+    font-family: var(--sans);
+    font-size: 14px;
+    font-weight: 400;
+    letter-spacing: .05em;
+    padding: 15px 36px;
+    border-radius: 8px;
+    text-decoration: none;
+    transition: background .2s, transform .15s;
+  }
+  .btn-main:hover { background: var(--cherry-mid); transform: translateY(-1px); }
+  .btn-ghost {
+    background: transparent;
+    color: #ccc;
+    font-family: var(--sans);
+    font-size: 14px;
+    font-weight: 300;
+    letter-spacing: .05em;
+    padding: 15px 36px;
+    border-radius: 8px;
+    border: 0.5px solid rgba(255,255,255,0.2);
+    text-decoration: none;
+    transition: border-color .2s, color .2s;
+  }
+  .btn-ghost:hover { border-color: rgba(255,255,255,0.4); color: #fff; }
+  .hero-note {
+    font-size: 12px;
+    color: #555;
+    position: relative; z-index: 1;
+    letter-spacing: .04em;
+  }
+  .hero-stats {
+    display: flex; gap: 0;
+    border: 0.5px solid rgba(255,255,255,0.08);
+    border-radius: 12px;
+    overflow: hidden;
+    position: relative; z-index: 1;
+    margin-top: 48px;
+    max-width: 640px;
+    width: 100%;
+  }
+  .hero-stat {
+    flex: 1;
+    padding: 20px 24px;
+    text-align: center;
+    border-right: 0.5px solid rgba(255,255,255,0.08);
+  }
+  .hero-stat:last-child { border-right: none; }
+  .hero-stat-val {
+    font-family: var(--serif);
+    font-size: 28px;
+    font-weight: 500;
+    color: var(--brown-light);
+    line-height: 1;
+    margin-bottom: 6px;
+  }
+  .hero-stat-label {
+    font-size: 11px;
+    color: #666;
+    letter-spacing: .05em;
+    text-transform: uppercase;
+  }
+
+  /* ── SECTIONS SHARED ── */
+  .section {
+    padding: 88px 48px;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+  .section-full {
+    padding: 88px 48px;
+  }
+  .label {
+    font-size: 11px;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    color: var(--brown-mid);
+    font-weight: 500;
+    margin-bottom: 12px;
+    display: flex; align-items: center; gap: 10px;
+  }
+  .label::before {
+    content: '';
+    display: block;
+    width: 24px; height: 1px;
+    background: var(--brown-mid);
+  }
+  .h2 {
+    font-family: var(--serif);
+    font-size: clamp(30px, 4vw, 46px);
+    font-weight: 500;
+    line-height: 1.15;
+    margin-bottom: 16px;
+  }
+  .h2 em { font-style: italic; color: var(--cherry); }
+  .lead {
+    font-size: 15px;
+    color: var(--text-muted);
+    max-width: 520px;
+    line-height: 1.75;
+    margin-bottom: 52px;
+    font-weight: 300;
+  }
+
+  /* ── PAIN ── */
+  .pain-bg { background: var(--dark-2); }
+  .pain-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 88px 48px;
+  }
+  .pain-inner .h2 { color: var(--cream); }
+  .pain-inner .lead { color: #777; }
+  .pain-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 2px;
+    background: rgba(255,255,255,0.05);
+    border-radius: 16px;
+    overflow: hidden;
+  }
+  .pain-card {
+    background: var(--dark-3);
+    padding: 36px 32px;
+    position: relative;
+  }
+  .pain-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 2px;
+    background: var(--cherry);
+  }
+  .pain-num {
+    font-family: var(--serif);
+    font-size: 48px;
+    font-weight: 400;
+    color: rgba(107,28,53,0.4);
+    line-height: 1;
+    margin-bottom: 16px;
+  }
+  .pain-card h3 {
+    font-size: 15px;
+    font-weight: 500;
+    color: var(--cream);
+    margin-bottom: 10px;
+    letter-spacing: .01em;
+  }
+  .pain-card p {
+    font-size: 13px;
+    color: #777;
+    line-height: 1.65;
+    font-weight: 300;
+  }
+
+  /* ── ADVANTAGES ── */
+  .adv-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 20px;
+  }
+  .adv-card {
+    background: var(--cream);
+    border-radius: 14px;
+    padding: 32px 28px;
+    position: relative;
+    overflow: hidden;
+    transition: transform .2s;
+  }
+  .adv-card:hover { transform: translateY(-3px); }
+  .adv-card::after {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--cherry), var(--brown-mid));
+    opacity: 0;
+    transition: opacity .2s;
+  }
+  .adv-card:hover::after { opacity: 1; }
+  .adv-icon {
+    width: 44px; height: 44px;
+    border-radius: 10px;
+    background: var(--dark);
+    display: flex; align-items: center; justify-content: center;
+    margin-bottom: 20px;
+  }
+  .adv-icon svg { width: 20px; height: 20px; stroke: var(--brown-light); fill: none; stroke-width: 1.5; }
+  .adv-card h3 {
+    font-size: 15px;
+    font-weight: 500;
+    margin-bottom: 10px;
+    color: var(--text);
+  }
+  .adv-card p {
+    font-size: 13px;
+    color: var(--text-muted);
+    line-height: 1.65;
+    font-weight: 300;
+  }
+
+  /* ── NUMBERS BAR ── */
+  .numbers-bar {
+    background: var(--cherry);
+    padding: 0;
+  }
+  .numbers-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0;
+  }
+  .num-item {
+    padding: 44px 32px;
+    text-align: center;
+    border-right: 0.5px solid rgba(255,255,255,0.15);
+  }
+  .num-item:last-child { border-right: none; }
+  .num-val {
+    font-family: var(--serif);
+    font-size: 40px;
+    font-weight: 500;
+    color: #fff;
+    line-height: 1;
+    margin-bottom: 8px;
+  }
+  .num-label {
+    font-size: 12px;
+    color: rgba(255,255,255,0.6);
+    letter-spacing: .04em;
+    font-weight: 300;
+  }
+
+  /* ── STEPS ── */
+  .steps-bg { background: var(--dark); }
+  .steps-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 88px 48px;
+  }
+  .steps-inner .h2 { color: var(--cream); }
+  .steps-inner .lead { color: #666; }
+  .steps-list { display: flex; flex-direction: column; gap: 0; }
+  .step-item {
+    display: grid;
+    grid-template-columns: 80px 1fr;
+    gap: 32px;
+    padding: 36px 0;
+    border-bottom: 0.5px solid rgba(255,255,255,0.06);
+    align-items: start;
+  }
+  .step-item:last-child { border-bottom: none; }
+  .step-num-wrap {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+  }
+  .step-num {
+    width: 48px; height: 48px;
+    border-radius: 50%;
+    border: 0.5px solid rgba(107,28,53,0.6);
+    background: rgba(107,28,53,0.15);
+    display: flex; align-items: center; justify-content: center;
+    font-family: var(--serif);
+    font-size: 20px;
+    font-weight: 500;
+    color: var(--cherry-light);
+  }
+  .step-line {
+    width: 1px;
+    flex: 1;
+    min-height: 24px;
+    background: rgba(107,28,53,0.25);
+  }
+  .step-item:last-child .step-line { display: none; }
+  .step-content h3 {
+    font-size: 17px;
+    font-weight: 500;
+    color: var(--cream);
+    margin-bottom: 10px;
+    padding-top: 12px;
+  }
+  .step-content p {
+    font-size: 14px;
+    color: #777;
+    line-height: 1.7;
+    font-weight: 300;
+  }
+  .step-tag {
+    display: inline-block;
+    background: rgba(92,51,23,0.2);
+    border: 0.5px solid rgba(139,90,43,0.3);
+    color: var(--brown-light);
+    font-size: 11px;
+    letter-spacing: .06em;
+    padding: 4px 12px;
+    border-radius: 20px;
+    margin-bottom: 10px;
+  }
+
+  /* ── ABOUT ── */
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: start;
+  }
+  .about-text h2 {
+    font-family: var(--serif);
+    font-size: clamp(28px, 3.5vw, 42px);
+    font-weight: 500;
+    line-height: 1.2;
+    margin-bottom: 24px;
+  }
+  .about-text p {
+    font-size: 14px;
+    color: var(--text-muted);
+    line-height: 1.8;
+    margin-bottom: 16px;
+    font-weight: 300;
+  }
+  .about-points { display: flex; flex-direction: column; gap: 20px; }
+  .about-point {
+    display: flex; gap: 16px; align-items: flex-start;
+    padding: 20px;
+    background: var(--cream);
+    border-radius: 10px;
+    border-left: 2px solid var(--cherry);
+  }
+  .about-point-icon {
+    font-family: var(--serif);
+    font-size: 22px;
+    color: var(--cherry);
+    line-height: 1;
+    flex-shrink: 0;
+  }
+  .about-point h4 {
+    font-size: 14px;
+    font-weight: 500;
+    margin-bottom: 4px;
+  }
+  .about-point p {
+    font-size: 13px;
+    color: var(--text-muted);
+    line-height: 1.6;
+    font-weight: 300;
+  }
+
+  /* ── REVIEWS ── */
+  .reviews-bg { background: var(--dark-2); }
+  .reviews-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 88px 48px;
+  }
+  .reviews-inner .h2 { color: var(--cream); }
+  .reviews-inner .lead { color: #666; }
+  .reviews-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 16px;
+  }
+  .review-card {
+    background: var(--dark-3);
+    border-radius: 12px;
+    padding: 28px;
+    border: 0.5px solid rgba(255,255,255,0.05);
+    position: relative;
+  }
+  .review-card::before {
+    content: '\201C';
+    font-family: var(--serif);
+    font-size: 64px;
+    color: rgba(107,28,53,0.3);
+    position: absolute;
+    top: 12px; right: 20px;
+    line-height: 1;
+  }
+  .review-stars { color: var(--brown-light); font-size: 12px; letter-spacing: 3px; margin-bottom: 14px; }
+  .review-text {
+    font-size: 13px;
+    color: #aaa;
+    line-height: 1.7;
+    margin-bottom: 20px;
+    font-weight: 300;
+    font-style: italic;
+    font-family: var(--serif);
+    font-size: 15px;
+  }
+  .review-divider {
+    height: 0.5px;
+    background: rgba(255,255,255,0.07);
+    margin-bottom: 14px;
+  }
+  .review-name { font-size: 12px; color: #666; font-weight: 500; letter-spacing: .04em; }
+  .reviews-tg-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 32px;
+    font-size: 13px;
+    color: var(--brown-light);
+    text-decoration: none;
+    letter-spacing: .04em;
+    transition: color .2s;
+  }
+  .reviews-tg-link:hover { color: var(--cream); }
+  .reviews-tg-link::after { content: '→'; }
+
+  /* ── FAQ ── */
+  .faq-list { display: flex; flex-direction: column; }
+  .faq-item {
+    border-bottom: 0.5px solid var(--cream-2);
+    cursor: pointer;
+  }
+  .faq-q {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 22px 0;
+    font-size: 15px;
+    font-weight: 400;
+    color: var(--text);
+    user-select: none;
+    gap: 16px;
+  }
+  .faq-q-icon {
+    width: 24px; height: 24px;
+    border-radius: 50%;
+    border: 0.5px solid var(--cream-2);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 16px;
+    color: var(--text-muted);
+    flex-shrink: 0;
+    transition: transform .2s, border-color .2s;
+  }
+  .faq-item.open .faq-q-icon {
+    transform: rotate(45deg);
+    border-color: var(--cherry);
+    color: var(--cherry);
+  }
+  .faq-a {
+    font-size: 14px;
+    color: var(--text-muted);
+    line-height: 1.75;
+    padding-bottom: 22px;
+    display: none;
+    font-weight: 300;
+  }
+  .faq-item.open .faq-a { display: block; }
+
+  /* ── FINAL CTA ── */
+  .final-cta-section { padding: 88px 48px; }
+  .final-cta-box {
+    background: var(--dark);
+    border-radius: 20px;
+    padding: 72px 48px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+  .final-cta-box::before {
+    content: '';
+    position: absolute; inset: 0;
+    background:
+      radial-gradient(ellipse 70% 60% at 50% 0%, rgba(107,28,53,0.4) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .final-cta-box h2 {
+    font-family: var(--serif);
+    font-size: clamp(32px, 5vw, 54px);
+    font-weight: 500;
+    color: var(--cream);
+    line-height: 1.15;
+    margin-bottom: 16px;
+    position: relative; z-index: 1;
+  }
+  .final-cta-box h2 em { font-style: italic; color: var(--brown-light); }
+  .final-cta-box p {
+    font-size: 15px;
+    color: #888;
+    max-width: 480px;
+    margin: 0 auto 40px;
+    line-height: 1.7;
+    font-weight: 300;
+    position: relative; z-index: 1;
+  }
+  .final-actions {
+    display: flex; gap: 14px; justify-content: center; flex-wrap: wrap;
+    position: relative; z-index: 1;
+    margin-bottom: 24px;
+  }
+  .btn-cherry-lg {
+    background: var(--cherry);
+    color: #fff;
+    font-family: var(--sans);
+    font-size: 15px;
+    font-weight: 400;
+    letter-spacing: .04em;
+    padding: 16px 40px;
+    border-radius: 8px;
+    text-decoration: none;
+    transition: background .2s, transform .15s;
+  }
+  .btn-cherry-lg:hover { background: var(--cherry-mid); transform: translateY(-1px); }
+  .final-phone {
+    font-size: 13px;
+    color: #555;
+    position: relative; z-index: 1;
+    letter-spacing: .04em;
+  }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--dark);
+    border-top: 0.5px solid rgba(255,255,255,0.06);
+    padding: 40px 48px;
+    text-align: center;
+  }
+  .footer-logo {
+    font-family: var(--serif);
+    font-size: 22px;
+    color: var(--cream);
+    margin-bottom: 16px;
+  }
+  .footer-logo span { color: var(--brown-light); }
+  .footer-addresses {
+    font-size: 12px;
+    color: #444;
+    max-width: 600px;
+    margin: 0 auto 16px;
+    line-height: 1.9;
+    font-weight: 300;
+  }
+  .footer-contacts {
+    font-size: 13px;
+    color: #555;
+  }
+  .footer-contacts a { color: var(--brown-mid); text-decoration: none; }
+  .footer-copy {
+    margin-top: 24px;
+    font-size: 11px;
+    color: #333;
+    letter-spacing: .04em;
+  }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 768px) {
+    nav { padding: 14px 20px; }
+    .hero { padding: 100px 20px 60px; }
+    .hero-stats { flex-direction: column; gap: 0; }
+    .hero-stat { border-right: none; border-bottom: 0.5px solid rgba(255,255,255,0.08); }
+    .section, .pain-inner, .steps-inner, .reviews-inner { padding: 60px 20px; }
+    .section-full, .final-cta-section { padding: 60px 20px; }
+    .numbers-inner { grid-template-columns: 1fr 1fr; }
+    .num-item { border-right: none; border-bottom: 0.5px solid rgba(255,255,255,0.1); }
+    .num-item:nth-child(2n) { border-bottom: 0.5px solid rgba(255,255,255,0.1); }
+    .about-grid { grid-template-columns: 1fr; gap: 36px; }
+    .step-item { grid-template-columns: 56px 1fr; gap: 20px; }
+    .final-cta-box { padding: 48px 24px; }
+    footer { padding: 40px 20px; }
+  }
+
+  /* ── ANIMATIONS ── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  .hero-badge { animation: fadeUp .6s ease both; }
+  .hero h1    { animation: fadeUp .7s .1s ease both; }
+  .hero-sub-title { animation: fadeUp .7s .2s ease both; }
+  .hero-desc  { animation: fadeUp .7s .3s ease both; }
+  .hero-actions { animation: fadeUp .7s .4s ease both; }
+  .hero-stats { animation: fadeUp .7s .5s ease both; }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">Я<span>Кофейня</span></div>
+  <a class="nav-cta" href="https://t.me/nandan_das" target="_blank">Получить консультацию</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-badge">Государственный грант · 350 000 ₽</div>
+  <h1>Кофейня под ключ —<br><em>за деньги государства</em></h1>
+  <p class="hero-sub-title">Ваши вложения — ноль рублей</p>
+  <p class="hero-desc">Помогаем открыть кофейню самообслуживания по программе социального контракта. Без опыта в бизнесе, без стартового капитала. Только три шага — и у вас своё дело.</p>
+  <div class="hero-actions">
+    <a class="btn-main" href="https://t.me/nandan_das" target="_blank">Написать в Telegram</a>
+    <a class="btn-ghost" href="#how">Как это работает</a>
+  </div>
+  <p class="hero-note">Более 20 кофеен уже открыто в Кирове</p>
+  <div class="hero-stats">
+    <div class="hero-stat">
+      <div class="hero-stat-val">350K</div>
+      <div class="hero-stat-label">Грант от государства</div>
+    </div>
+    <div class="hero-stat">
+      <div class="hero-stat-val">20+</div>
+      <div class="hero-stat-label">Кофеен открыто</div>
+    </div>
+    <div class="hero-stat">
+      <div class="hero-stat-val">20–30K</div>
+      <div class="hero-stat-label">Доход в месяц, ₽</div>
+    </div>
+    <div class="hero-stat">
+      <div class="hero-stat-val">0 ₽</div>
+      <div class="hero-stat-label">Ваших вложений</div>
+    </div>
+  </div>
+</section>
+
+<!-- PAIN -->
+<div class="pain-bg">
+  <div class="pain-inner">
+    <div class="label">Узнаёте себя?</div>
+    <h2 class="h2" style="color:var(--cream)">Хотите своё дело,<br>но что-то мешает</h2>
+    <p class="lead">Большинство останавливаются ещё до старта. Мы знаем эти барьеры — и умеем их убирать.</p>
+    <div class="pain-grid">
+      <div class="pain-card">
+        <div class="pain-num">01</div>
+        <h3>Нет стартового капитала</h3>
+        <p>Открыть бизнес кажется невозможным без накоплений. Кредиты пугают, инвесторов нет — непонятно, с чего начать.</p>
+      </div>
+      <div class="pain-card">
+        <div class="pain-num">02</div>
+        <h3>Нет опыта в бизнесе</h3>
+        <p>Регистрация ИП, бизнес-план, документы, оборудование — всё это выглядит как запутанный лабиринт без проводника.</p>
+      </div>
+      <div class="pain-card">
+        <div class="pain-num">03</div>
+        <h3>Страх не справиться</h3>
+        <p>Боитесь, что продажи не пойдут или не справитесь с управлением. Это нормально — и вполне решаемо с правильной поддержкой.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ADVANTAGES -->
+<section class="section">
+  <div class="label">Наше решение</div>
+  <h2 class="h2">Мы берём на себя<br><em>всё сложное</em></h2>
+  <p class="lead">Вы получаете готовый работающий бизнес. Мы получаем вознаграждение из суммы гранта — вы не платите ничего сверх.</p>
+  <div class="adv-grid">
+    <div class="adv-card">
+      <div class="adv-icon">
+        <svg viewBox="0 0 24 24"><path d="M9 12h6M9 16h6M7 8h10M5 4h14a2 2 0 012 2v14a2 2 0 01-2 2H5a2 2 0 01-2-2V6a2 2 0 012-2z"/></svg>
+      </div>
+      <h3>Полное сопровождение по соцконтракту</h3>
+      <p>Бизнес-план, пакет документов, подготовка к комиссии, подача заявки — мы знаем процедуру до мелочей. Более 20 успешных контрактов за два года.</p>
+    </div>
+    <div class="adv-card">
+      <div class="adv-icon">
+        <svg viewBox="0 0 24 24"><path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3-3a1 1 0 000-1.4l-1.6-1.6a1 1 0 00-1.4 0l-3 3zM4 20h4l9.5-9.5-4-4L4 16v4z"/></svg>
+      </div>
+      <h3>Сборка кофейни под ключ</h3>
+      <p>Оборудование, стойка, кофемашина, неоновая вывеска, отработанные рецептуры напитков — всё собираем и настраиваем за вас на полученный грант.</p>
+    </div>
+    <div class="adv-card">
+      <div class="adv-icon">
+        <svg viewBox="0 0 24 24"><path d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z"/></svg>
+      </div>
+      <h3>Простое управление с телефона</h3>
+      <p>Умная розетка, Wi-Fi камера, датчик движения, управление терминалом онлайн. Контролируете точку из любого места — дом, работа, отпуск.</p>
+    </div>
+    <div class="adv-card">
+      <div class="adv-icon">
+        <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+      </div>
+      <h3>Минимальный риск, полная свобода</h3>
+      <p>Нет юридических и финансовых рисков. Если место не пошло — кофейню переставляют. Через 24 месяца можно продать от 250 до 470 тыс. ₽.</p>
+    </div>
+  </div>
+</section>
+
+<!-- NUMBERS BAR -->
+<div class="numbers-bar">
+  <div class="numbers-inner">
+    <div class="num-item">
+      <div class="num-val">350K ₽</div>
+      <div class="num-label">Грант от государства — безвозмездно</div>
+    </div>
+    <div class="num-item">
+      <div class="num-val">20+</div>
+      <div class="num-label">Кофеен открыто за 2 года</div>
+    </div>
+    <div class="num-item">
+      <div class="num-val">20–30K</div>
+      <div class="num-label">Средний доход в месяц, чистыми</div>
+    </div>
+    <div class="num-item">
+      <div class="num-val">9 из 10</div>
+      <div class="num-label">Комиссий проходят с одобрением</div>
+    </div>
+  </div>
+</div>
+
+<!-- STEPS -->
+<div class="steps-bg" id="how">
+  <div class="steps-inner">
+    <div class="label" style="color:var(--brown-mid)">Как это работает</div>
+    <h2 class="h2" style="color:var(--cream)">Три шага<br>до своего бизнеса</h2>
+    <p class="lead">Весь процесс занимает от нескольких недель. Большую часть работы делаем мы.</p>
+    <div class="steps-list">
+      <div class="step-item">
+        <div class="step-num-wrap">
+          <div class="step-num">1</div>
+          <div class="step-line"></div>
+        </div>
+        <div class="step-content">
+          <div class="step-tag">Подача заявки</div>
+          <h3>Оставляете контакт — мы готовим всё</h3>
+          <p>Вы связываетесь с нами, мы рассказываем детали и проверяем ваше право на соцконтракт. Затем готовим бизнес-план, пакет документов и гарантийные письма. Вы только подписываете и подаёте заявку через МФЦ или Госуслуги.</p>
+        </div>
+      </div>
+      <div class="step-item">
+        <div class="step-num-wrap">
+          <div class="step-num">2</div>
+          <div class="step-line"></div>
+        </div>
+        <div class="step-content">
+          <div class="step-tag">Тестирование и комиссия</div>
+          <h3>Мы готовим вас к каждому этапу</h3>
+          <p>Тест из 45 вопросов — стандартная проверка предпринимательской компетенции, проходят все. Затем короткое собеседование комиссии по бизнес-плану, обычно 5–10 минут. В 9 из 10 случаев — одобрение. Мы заранее объясняем что и как.</p>
+        </div>
+      </div>
+      <div class="step-item">
+        <div class="step-num-wrap">
+          <div class="step-num">3</div>
+          <div class="step-line"></div>
+        </div>
+        <div class="step-content">
+          <div class="step-tag">Открытие кофейни</div>
+          <h3>Деньги на счёте — кофейня у вас</h3>
+          <p>После подписания контракта в течение 14 дней поступает выплата 350 000 ₽. Средства переводятся поставщику по реквизитам гарантийного письма. Мы собираем кофейню, устанавливаем оборудование, настраиваем всё удалённое управление. Вы открываетесь.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<section class="section">
+  <div class="about-grid">
+    <div class="about-text">
+      <div class="label">О нас</div>
+      <h2 class="about-text h2" style="font-family:var(--serif);font-size:clamp(28px,3.5vw,42px);font-weight:500;line-height:1.2;margin-bottom:24px">Опыт,<br><em style="font-style:italic;color:var(--cherry)">который работает</em></h2>
+      <p>Мы не посредники и не теоретики. Весь путь прошли сами: получили соцконтракт, открыли первую кофейню, научились собирать стойки, отладили рецептуры, нашли лучших поставщиков по соотношению цены и качества.</p>
+      <p>Сегодня в нашей сети более 20 работающих точек по Кирову — вы можете зайти и посмотреть вживую до принятия решения. Все отзывы и история открытий — в нашем Telegram-канале.</p>
+      <p>Мы открыты к диалогу. Ответим на любые вопросы, предоставим подробный бизнес-план с цифрами, проведём по всем этапам лично.</p>
+    </div>
+    <div class="about-points">
+      <div class="about-point">
+        <div class="about-point-icon">✦</div>
+        <div>
+          <h4>Опыт в цифрах</h4>
+          <p>Более двух лет работы. 20+ успешно открытых кофеен. Все процессы — от документов до поставщиков — выстроены и отлажены.</p>
+        </div>
+      </div>
+      <div class="about-point">
+        <div class="about-point-icon">✦</div>
+        <div>
+          <h4>Прозрачность</h4>
+          <p>Мы получаем вознаграждение из суммы соцконтракта за сборку и установку оборудования. Вы не платите ничего сверх — это честно и понятно.</p>
+        </div>
+      </div>
+      <div class="about-point">
+        <div class="about-point-icon">✦</div>
+        <div>
+          <h4>Реальные точки в городе</h4>
+          <p>Владимирская, Ленина, Октябрьский пр-т и ещё десятки адресов. Можете зайти на кофе и познакомиться с форматом вживую.</p>
+        </div>
+      </div>
+      <div class="about-point">
+        <div class="about-point-icon">✦</div>
+        <div>
+          <h4>Отзывы в открытом доступе</h4>
+          <p>Telegram-канал с историями наших клиентов, фотографиями точек и актуальными результатами. Всё открыто — никаких приукрашиваний.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- REVIEWS -->
+<div class="reviews-bg">
+  <div class="reviews-inner">
+    <div class="label" style="color:var(--brown-mid)">Отзывы</div>
+    <h2 class="h2" style="color:var(--cream)">Говорят<br><em style="color:var(--brown-light)">те, кто уже открылся</em></h2>
+    <p class="lead">Реальные истории людей без опыта в бизнесе и без стартового капитала.</p>
+    <div class="reviews-grid">
+      <div class="review-card">
+        <div class="review-stars">★★★★★</div>
+        <p class="review-text">Думала, что соцконтракт — это что-то сложное и долгое. На деле всё прошло за месяц. Документы готовили за меня, я только приходила на комиссию. Кофейня уже работает второй месяц, доход стабильный.</p>
+        <div class="review-divider"></div>
+        <p class="review-name">Марина К. · 34 года · Киров</p>
+      </div>
+      <div class="review-card">
+        <div class="review-stars">★★★★★</div>
+        <p class="review-text">Не было ни денег, ни опыта. Сначала казалось нереальным. Сейчас у меня своя точка, управляю с телефона, пока работаю на основной работе. Реально пассивный доход с нуля.</p>
+        <div class="review-divider"></div>
+        <p class="review-name">Антон Р. · 28 лет · Киров</p>
+      </div>
+      <div class="review-card">
+        <div class="review-stars">★★★★★</div>
+        <p class="review-text">Сомневалась долго — думала, слишком хорошо, чтобы быть правдой. Съездила, посмотрела на их кофейни, пообщалась лично — всё прозрачно. Сейчас сама в процессе получения контракта.</p>
+        <div class="review-divider"></div>
+        <p class="review-name">Елена В. · 41 год · Киров</p>
+      </div>
+    </div>
+    <a class="reviews-tg-link" href="https://t.me/nandan_das" target="_blank">Больше отзывов в нашем Telegram-канале</a>
+  </div>
+</div>
+
+<!-- FAQ -->
+<section class="section">
+  <div class="label">Частые вопросы</div>
+  <h2 class="h2">Отвечаем<br><em>честно</em></h2>
+  <p class="lead">Собрали самые частые вопросы. Если не найдёте ответа — просто напишите.</p>
+  <div class="faq-list">
+    <div class="faq-item" onclick="toggleFaq(this)">
+      <div class="faq-q">
+        <span>Я официально не трудоустроен. Точно подхожу?</span>
+        <div class="faq-q-icon">+</div>
+      </div>
+      <div class="faq-a">Соцконтракт на открытие бизнеса доступен любому совершеннолетнему гражданину РФ, не устроенному официально. Конкретные требования могут незначительно отличаться по регионам. Напишите нам — проверим ваш статус за пару минут.</div>
+    </div>
+    <div class="faq-item" onclick="toggleFaq(this)">
+      <div class="faq-q">
+        <span>А вдруг комиссия откажет?</span>
+        <div class="faq-q-icon">+</div>
+      </div>
+      <div class="faq-a">Одобрение в 9 из 10 случаев. При отказе единственное, что теряется — несколько часов времени. Денег вы не вкладываете, финансовый риск равен нулю. Юридических рисков тоже нет — это полностью легальная государственная программа.</div>
+    </div>
+    <div class="faq-item" onclick="toggleFaq(this)">
+      <div class="faq-q">
+        <span>Сколько времени занимает управление кофейней?</span>
+        <div class="faq-q-icon">+</div>
+      </div>
+      <div class="faq-a">Кофейня самообслуживания — покупатель сам готовит напиток. Ваша задача: раз в несколько дней пополнить ингредиенты и проверить чистоту. Всё остальное — дистанционно через приложение. Большинство наших клиентов совмещают это с основной работой.</div>
+    </div>
+    <div class="faq-item" onclick="toggleFaq(this)">
+      <div class="faq-q">
+        <span>Что если захочу продать кофейню?</span>
+        <div class="faq-q-icon">+</div>
+      </div>
+      <div class="faq-a">Через 24 месяца после подписания контракта — абсолютно легально. По нашему опыту стоимость готовой точки от 250 до 470 тысяч рублей в зависимости от места. Продаётся через Авито или тематические чаты, процесс несложный.</div>
+    </div>
+    <div class="faq-item" onclick="toggleFaq(this)">
+      <div class="faq-q">
+        <span>Сколько я плачу за ваши услуги?</span>
+        <div class="faq-q-icon">+</div>
+      </div>
+      <div class="faq-a">Ничего сверх суммы гранта. Наше вознаграждение включено в стоимость оборудования и услуг, которые оплачиваются из 350 000 ₽ соцконтракта. Из своего кармана — ноль рублей.</div>
+    </div>
+    <div class="faq-item" onclick="toggleFaq(this)">
+      <div class="faq-q">
+        <span>Какой доход реально ожидать?</span>
+        <div class="faq-q-icon">+</div>
+      </div>
+      <div class="faq-a">По нашей практике средний показатель — 20–30 тысяч рублей в месяц чистыми. Многое зависит от места: одна точка может приносить более 50К, другая — около 10К. Ни одна из открытых нами кофеен не работает в минус. Подробный бизнес-план с расчётами предоставим по запросу.</div>
+    </div>
+  </div>
+</section>
+
+<!-- FINAL CTA -->
+<div class="final-cta-section">
+  <div class="final-cta-box">
+    <h2>Готовы сделать<br><em>первый шаг?</em></h2>
+    <p>Напишите нам — расскажем подробнее, проверим право на соцконтракт и ответим на все вопросы. Без обязательств и давления.</p>
+    <div class="final-actions">
+      <a class="btn-cherry-lg" href="https://t.me/nandan_das" target="_blank">Написать в Telegram @nandan_das</a>
+    </div>
+    <p class="final-phone">Или позвоните/напишите в WhatsApp: +7 (912) 702-49-65</p>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">Я<span>Кофейня</span></div>
+  <div class="footer-addresses">
+    Наши точки в Кирове: Владимирская 18А · Владимирская 18Б · Ленина 101А · Воровского 104Б · Воровского 113Б · Октябрьский пр-т 79 · Октябрьский пр-т 116А · Комсомольская 105А · Боровицкая 9 · Свободы 67 · Преображенская 4 · Чапаева 7 · Спасская 59 и другие
+  </div>
+  <div class="footer-contacts">
+    <a href="https://t.me/nandan_das" target="_blank">Telegram: @nandan_das</a> &nbsp;·&nbsp; +7 (912) 702-49-65
+  </div>
+  <div class="footer-copy">© 2025 ЯКофейня · Киров</div>
+</footer>
+
+<script>
+function toggleFaq(el) {
+  const isOpen = el.classList.contains('open');
+  document.querySelectorAll('.faq-item.open').forEach(function(item) {
+    item.classList.remove('open');
+  });
+  if (!isOpen) el.classList.add('open');
+}
+</script>
+
+</body>
+</html>
